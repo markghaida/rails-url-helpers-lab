@@ -1,1 +1,7 @@
 <h1><%= @student.to_s %></h1>
+
+<% if @student.active %>
+  This student is currently active.
+<% else %>
+  This student is currently inactive. <%# doesnt @student.active always exist? if so, how does it know whether to execute the if or else statement?%>
+<% end %>

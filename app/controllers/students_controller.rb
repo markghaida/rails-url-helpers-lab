@@ -1,16 +1,21 @@
 class StudentsController < ApplicationController
-  before_action :set_student, only: :show
+
   
   def index
     @students = Student.all
+    #byebug
   end
 
   def show
+    @student = Student.find(params[:id])
+    #byebug
   end
 
-  private
+  def activate #
+    @student = Student.find(params[:id])
+    @student.active = !@student.active
+    @student.save 
+    redirect_to student_path(@student) # I do not understand this line bc Im not clear what "student_path(@student)" is doing 
+  end 
 
-    def set_student
-      @student = Student.find(params[:id])
-    end
-end
+end 
